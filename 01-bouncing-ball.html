@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><title>Bouncing ball</title></head>
+<body>
+<canvas id="canvas" width="500" height="300"
+        style="border:1px solid black"></canvas>
+<script>
+let canvas = document.getElementById("canvas");
+let g = canvas.getContext("2d");
+let x = 100, y = 80;
+let dx = 2, dy = 2;
+let r = 20;
+
+function draw() {
+  g.clearRect(0, 0, 500, 300);
+  g.beginPath();
+  g.arc(x, y, r, 0, 2 * Math.PI);
+  g.stroke();
+
+  x = x + dx;
+  y = y + dy;
+  if (x <= r || x >= 500 - r) dx = -dx;
+  if (y <= r || y >= 300 - r) dy = -dy;
+}
+setInterval(draw, 20);
+</script>
+</body>
+</html>

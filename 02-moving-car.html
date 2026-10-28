@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Moving car</title></head>
+<body>
+<canvas id="canvas" width="500" height="300"
+        style="border:1px solid black"></canvas>
+<script>
+let canvas = document.getElementById("canvas");
+let g = canvas.getContext("2d");
+let x = -80;
+
+function draw() {
+  g.clearRect(0, 0, 500, 300);
+  g.strokeRect(x, 150, 80, 25);       // Body
+  g.strokeRect(x + 20, 130, 40, 20); // Roof
+  g.beginPath();
+  g.arc(x + 20, 183, 8, 0, 2 * Math.PI);
+  g.stroke();
+  g.beginPath();
+  g.arc(x + 60, 183, 8, 0, 2 * Math.PI);
+  g.stroke();
+
+  x = x + 2;
+  if (x > 500) x = -80;
+}
+setInterval(draw, 20);
+</script>
+</body>
+</html>
